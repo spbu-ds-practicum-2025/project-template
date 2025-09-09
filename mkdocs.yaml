@@ -3,8 +3,8 @@ repo_url: https://github.com/ds-practicum-2025/proj-template
 theme:
   name: material
 nav:
-  - Главная: docs/index.md
-  - Техническое решение: docs/tr.md
+  - Главная: index.md
+  - Техническое решение: tr.md
 markdown_extensions:
   - toc:
       permalink: true
