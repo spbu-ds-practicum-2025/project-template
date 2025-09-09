@@ -1,0 +1,29 @@
+name: Docs (PR preview)
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - run: pip install mkdocs mkdocs-material
+      - run: mkdocs build --strict
+
+      - name: Deploy PR Preview
+        uses: rossjrw/pr-preview-action@v1 
+        with:
+          source-dir: docs
+          preview-branch: gh-pages
+          umbrella-dir: pr-previews  
